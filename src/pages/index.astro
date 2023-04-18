@@ -78,6 +78,7 @@ import Layout from '../layouts/Layout.astro';
 	
 				.project {
 					max-width: 40rem;
+					min-width: 15rem;
 					display: flex;
 					flex-direction: column;
 					gap: 1rem;
@@ -102,6 +103,13 @@ import Layout from '../layouts/Layout.astro';
 						grid-template-columns: 10rem auto;
 						grid-template-rows: 10rem;
 						gap: 1rem;
+
+						@media (max-width: 600px) {
+							/* Estilos para pantallas pequeñas */
+							grid-template-columns: 1fr;
+							grid-template-rows: 12rem 10rem;
+
+						}
 
 						img {
 							border: 1px solid rgb(212, 202, 202);
