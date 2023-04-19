@@ -1,25 +1,30 @@
 ---
 import githubIcon from "/icons/github-icon.svg";
+
+export interface Props {
+	title: string;
+    imgUrl: string;
+    description: string;
+    githubUrl: string;
+}
+
+const { title, imgUrl, description, githubUrl } = Astro.props;
 ---
 
 <div class="project">
-    <h5>🐤 Tweety</h5>
+    <h5>{title}</h5>
 
     <div class="project-content">
         <img
-            src="https://i0.wp.com/www.fcme.org/wp-content/uploads/Twitter-logo.jpg?fit=600%2C436&ssl=1"
+            src={imgUrl}
             alt=""
         />
         <div class="description">
             <p>
-                Tweety is a web application that allows you to create an image
-                using the twitter user most recent tweets. The application
-                connects to the Twitter API, retrieves the most recent tweets,
-                and uses Hugging Face's stable diffusion model to generate an
-                image.
+                {description}
             </p>
 
-            <button id="github-button" class="button-icon">
+            <button id="github-button" class="button-icon" data-github={githubUrl}>
                 <span>Repository</span>
                 <img src={githubIcon} alt="" srcset="">
             </button>
@@ -28,13 +33,14 @@ import githubIcon from "/icons/github-icon.svg";
 </div>
 
 <script>
-    // Botón repositorio
     const githubButton = document.getElementById("github-button") as HTMLButtonElement;
+    const githubUrl = githubButton.dataset.github;
 
-    // Añadir evento al botón para redirigir a github
-    githubButton.addEventListener('click', () => {
-        window.open('https://github.com/safagoi/tweety', '_blank');
-    });
+    githubButton.addEventListener('click', onGithubButtonClick);
+
+    function onGithubButtonClick(): void {
+        window.open(githubUrl, '_blank');
+    }
 </script>
 
 <style lang="scss">
@@ -104,21 +110,3 @@ import githubIcon from "/icons/github-icon.svg";
         }
     }
 </style>
-
-
-<!-- <div class="project">
-    <h5>👾 Raspberry IOT</h5>
-
-    <div class="project-content">
-        <img src="https://www.raspberrypi.com/app/uploads/2022/02/COLOUR-Raspberry-Pi-Symbol-Registered.png" alt="">
-        <div class="description">
-            <p>
-                Raspberry Pi es una plataforma de hardware de computación de una sola placa que cuenta con una variedad de pines de entrada/salida que pueden ser utilizados para controlar una amplia gama de sensores y actuadores en proyectos de IoT. Los pines de entrada/salida permiten la interconexión con sensores de temperatura, humedad, luz, movimiento y otros dispositivos de monitoreo y control de ambiente.
-            </p>
-
-            <button>
-                Ver más
-            </button>
-        </div>
-    </div>
-</div> -->

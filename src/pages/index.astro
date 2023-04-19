@@ -1,6 +1,10 @@
 ---
 import ProjectCard from '../components/ProjectCard.astro';
 import Layout from '../layouts/Layout.astro';
+
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection("projects");
 ---
 
 <Layout title="develholzer">
@@ -10,7 +14,17 @@ import Layout from '../layouts/Layout.astro';
 				<h3>Some of my side projects</h3>
 
 				<div class="project-list">
-					<ProjectCard />
+
+					{
+						projects.map(project => (
+							<ProjectCard 
+								title={project.data.title}
+								imgUrl={project.data.imgUrl}  
+								description={project.data.description}
+								githubUrl={project.data.githubUrl}
+							/>
+						))
+					}
 				</div>
 			</section>
 		</div>
