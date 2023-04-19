@@ -96,7 +96,10 @@ const { id, title, imgUrl, description, githubUrl } = Astro.props;
                 justify-content: space-between;
                 
                 p {
-                    overflow-y: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 6;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
                     text-overflow: ellipsis;
                 }
 
