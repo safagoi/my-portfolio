@@ -22,7 +22,7 @@ const { title } = Astro.props;
 		<slot />
 	</body>
 </html>
-<style is:global>
+<style is:global lang="scss">
 
 	:root {
 		--accent: 124, 58, 237;
@@ -48,6 +48,32 @@ const { title } = Astro.props;
 		grid-template-rows: 10rem 1fr;
 		background-color: #F5F5DC;
 		color:  #232222;
+	}
+
+	button {
+		/* Button component styles */
+		padding: 0.45rem 0.75rem;
+		min-width: 7rem;
+		border: none;
+		background-color: #ffbf00;
+		color: #232222;
+		border-radius: 5px;
+		cursor: pointer;
+		font-weight: 600;
+		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.387);
+		transition: transform 0.3s ease-out;
+
+		&:hover {
+			background-color: #ffcd36;
+			transform: translateY(-2px);
+		}
+	}
+
+	.button-icon {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0rem .75rem;
 	}
 	
 	/* $color-fondo-cuaderno-antiguo: #F5F5DC;
