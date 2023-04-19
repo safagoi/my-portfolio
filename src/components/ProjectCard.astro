@@ -2,16 +2,17 @@
 import githubIcon from "/icons/github-icon.svg";
 
 export interface Props {
+    id: string;
 	title: string;
     imgUrl: string;
     description: string;
     githubUrl: string;
 }
 
-const { title, imgUrl, description, githubUrl } = Astro.props;
+const { id, title, imgUrl, description, githubUrl } = Astro.props;
 ---
 
-<div class="project">
+<div class="project" data-id={id} >
     <h5>{title}</h5>
 
     <div class="project-content">
@@ -23,7 +24,7 @@ const { title, imgUrl, description, githubUrl } = Astro.props;
                 {description}
             </p>
             
-            <button class="button-icon button-github" data-githuburl={githubUrl}>
+            <button data-id={`button-github-${id}`} class="button-icon button-github">
                 <span>Repository</span>
                 <img src={githubIcon}>
             </button>
@@ -31,8 +32,13 @@ const { title, imgUrl, description, githubUrl } = Astro.props;
     </div>
 </div>
 
-<script>
-
+<script define:vars={{id, githubUrl}}>
+    const projectCardElement = document.querySelector(`.project[data-id="${id}"]`);
+    const githubButton = projectCardElement.querySelector(".project-content > .description > button");
+    
+    githubButton.addEventListener('click', () => {
+        window.open(githubUrl, '_blank');
+    })
 </script>
 
 <style lang="scss">
