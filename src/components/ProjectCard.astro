@@ -17,30 +17,22 @@ const { title, imgUrl, description, githubUrl } = Astro.props;
     <div class="project-content">
         <img
             src={imgUrl}
-            alt=""
         />
         <div class="description">
             <p>
                 {description}
             </p>
-
-            <button id="github-button" class="button-icon" data-github={githubUrl}>
+            
+            <button class="button-icon button-github" data-githuburl={githubUrl}>
                 <span>Repository</span>
-                <img src={githubIcon} alt="" srcset="">
+                <img src={githubIcon}>
             </button>
         </div>
     </div>
 </div>
 
 <script>
-    const githubButton = document.getElementById("github-button") as HTMLButtonElement;
-    const githubUrl = githubButton.dataset.github;
 
-    githubButton.addEventListener('click', onGithubButtonClick);
-
-    function onGithubButtonClick(): void {
-        window.open(githubUrl, '_blank');
-    }
 </script>
 
 <style lang="scss">
@@ -96,15 +88,18 @@ const { title, imgUrl, description, githubUrl } = Astro.props;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                gap: 0.25rem;
-
+                
                 p {
                     overflow-y: hidden;
                     text-overflow: ellipsis;
                 }
 
                 button {
-                    align-self: flex-end;                   
+                    align-self: flex-end;
+                    
+                    img {
+                        width: 1rem;
+                    }
                 }
             }
         }
