@@ -1,10 +1,17 @@
 ---
+import ThemeChanger from "./ThemeChanger.astro";
+
 
 ---
 <header>
     <div class="header-content">
-        <h1>deverholzer</h1>
-        <span>💻 web app development 💻</span>
+        <div class="header-title">
+            <h1>deverholzer</h1>
+            <span>💻 web app development 💻</span>
+        </div>
+        <div>
+            <ThemeChanger />
+        </div>
     </div>
 </header>
 
@@ -15,12 +22,18 @@
         justify-content: center;
 
         .header-content {
+            flex: 1;
             margin: 0 2rem;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 0.5rem 0;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            max-width: 60rem;
+
+            .header-title {
+                text-align: center;
+            }
         }        
     }
 </style>
