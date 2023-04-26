@@ -5,7 +5,7 @@
 <div id="theme-changer">
     <input id="theme-input" type="checkbox" >
     <label for="theme-input">
-        <img src="icons/sun-icon.svg" alt="">
+        <img src="/my-portfolio/icons/sun-icon.svg" alt="">
     </label>
 </div>
 
@@ -37,8 +37,8 @@
     )! as HTMLInputElement;
     const themeChangerIcon = themeChangerElement.querySelector("img")! as HTMLImageElement;
 
-    const sunIcon = "/icons/sun-icon.svg";
-    const moonIcon = "/icons/moon-icon.svg";
+    const sunIcon = "/my-portfolio/icons/sun-icon.svg";
+    const moonIcon = "/my-portfolio/icons/moon-icon.svg";
 
     // Obtener tema del localStorage
     const currentTheme = localStorage.getItem("theme");
