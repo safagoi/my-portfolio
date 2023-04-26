@@ -1,0 +1,74 @@
+---
+
+---
+
+<div id="theme-changer">
+    <input id="theme-input" type="checkbox" >
+    <label for="theme-input">
+        <img src="icons/sun-icon.svg" alt="">
+    </label>
+</div>
+
+<style lang="scss">
+    #theme-changer {
+        transition: transform 0.3s ease-out;
+
+        &:hover {
+            transform: translateY(-2px);
+        }
+        input {
+            display: none;
+        }
+        label {
+
+            cursor: pointer;
+            img {
+                width: 3em;
+            }
+        }
+        
+    }
+</style>
+
+<script>
+    const themeChangerElement = document.getElementById("theme-changer")!;
+    const themeChangerInput = themeChangerElement.querySelector(
+        "#theme-input"
+    )! as HTMLInputElement;
+    const themeChangerIcon = themeChangerElement.querySelector("img")! as HTMLImageElement;
+
+    const sunIcon = "/icons/sun-icon.svg";
+    const moonIcon = "/icons/moon-icon.svg";
+
+    // Obtener tema del localStorage
+    const currentTheme = localStorage.getItem("theme");
+
+    // Si existe valor del tema en el localstorage
+    if (currentTheme) {
+        // Establecemos en el body el data-theme para que
+        // coincida con el del localstorage
+        document.documentElement.setAttribute("data-theme", currentTheme);
+
+        if (currentTheme === "dark") {
+            themeChangerInput.checked = true;
+            themeChangerIcon.src = moonIcon;
+        }
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute("data-theme", "dark");
+            localStorage.setItem("theme", "dark");
+            themeChangerIcon.src = moonIcon;
+        } else {
+            document.documentElement.setAttribute("data-theme", "light");
+            localStorage.setItem("theme", "light");
+            themeChangerIcon.src = sunIcon;
+        }
+    }
+
+    // Add an event listener to the theme toggle, which will switch the theme
+    themeChangerInput.addEventListener("change", switchTheme, false);
+</script>
+
+

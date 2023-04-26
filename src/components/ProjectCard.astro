@@ -25,8 +25,8 @@ const { id, title, imgUrl, description, githubUrl } = Astro.props;
             </p>
             
             <button data-id={`button-github-${id}`} class="button-icon button-github">
-                <span>Repository</span>
-                <img src={githubIcon}>
+                <span>Go to GitHub</span>
+                <!-- <img src={githubIcon}> -->
             </button>
         </div>
     </div>
@@ -48,13 +48,14 @@ const { id, title, imgUrl, description, githubUrl } = Astro.props;
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        background-color: white;
+        background-color: var(--project-card-bg-color);
         box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.387);
         border-radius: 10px;
         padding: 1rem;
+        border: var(--project-card-border);
 
         h5 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 500;
             cursor: pointer;
             transition: transform 0.3s ease-out;
@@ -77,7 +78,8 @@ const { id, title, imgUrl, description, githubUrl } = Astro.props;
             }
 
             img {
-                border: 1px solid rgb(212, 202, 202);
+                border: var(--project-card-img-border);
+                background-color: white;
                 border-radius: 10px;
                 width: 100%;
                 height: 100%;
