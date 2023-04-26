@@ -1,0 +1,31 @@
+---
+import ProjectCard from "../components/ProjectCard.astro";
+import Layout from "../layouts/Layout.astro";
+
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
+---
+
+<Layout title="develholzer">
+    <main>
+        <div class="main-content">
+            <section class="contact">
+                <h2>Contact</h2>
+            </section>
+        </div>
+    </main>
+</Layout>
+
+<style lang="scss">
+    main {
+        display: flex;
+        justify-content: center;
+
+        .main-content {
+            margin: 0 2rem;
+            flex: 1;
+            max-width: 60rem;
+        }
+    }
+</style>
