@@ -25,27 +25,53 @@ const { title } = Astro.props;
 <style is:global lang="scss">
 	:root {
 		--bg-color: #f5f5dc;
-	}
+		--font-color: #232222;
+		// Botones
+		--btn-bg-color: #ffbf00;
+		--btn-bg-hover-color: #ffcd36;
+		// Project Card
+		--project-card-bg-color: white;
+		--project-card-border: none;
+		--project-card-img-border: 1px solid rgb(212,202,202);
 
+	}
+	
 	[data-theme="light"] {
 		--bg-color: #f5f5dc;
-	}
+		--font-color: #232222;
 
+		--btn-bg-color: #ffbf00;
+		--btn-bg-hover-color: #ffcd36;
+
+		--project-card-bg-color: white;
+		--project-card-border: none;
+		--project-card-img-border: 1px solid rgb(212,202,202);
+	}
+	
 	[data-theme="dark"] {
-		--bg-color: gray;
-	}
+		--bg-color: black;
+		--font-color: rgb(22, 245, 22);
+		--btn-bg-color: rgb(73, 27, 73);
+		--btn-bg-hover-color: rgb(195, 44, 195);
 
+		--project-card-bg-color: black;
+		--project-card-border: 1px solid rgb(22, 245, 22);
+		--project-card-img-border: 1px solid rgb(22, 245, 22);
+	}
+	
 	* {
 		margin: 0;
 		padding: 0;
 		box-sizing: content-box;
 	}
-
+	
 	html,
 	body {
 		font-family: "Rubik";
 		height: 100%;
 		width: 100%;
+
+		transition: all .2s ease-in-out; // Efecto transición colores de los temas
 	}
 
 	/* Layout */
@@ -53,7 +79,7 @@ const { title } = Astro.props;
 		display: grid;
 		grid-template-rows: 10rem 1fr;
 		background-color: var(--bg-color);
-		color: #232222;
+		color: var(--font-color);
 	}
 
 	button {
@@ -61,8 +87,8 @@ const { title } = Astro.props;
 		padding: 0.45rem 0.75rem;
 		min-width: 5rem;
 		border: none;
-		background-color: #ffbf00;
-		color: #232222;
+		background-color: var(--btn-bg-color);
+		color: var(--font-color);
 		border-radius: 5px;
 		cursor: pointer;
 		font-weight: 600;
@@ -70,7 +96,7 @@ const { title } = Astro.props;
 		transition: transform 0.3s ease-out;
 
 		&:hover {
-			background-color: #ffcd36;
+			background-color: var(--btn-bg-hover-color);
 			transform: translateY(-2px);
 		}
 	}
